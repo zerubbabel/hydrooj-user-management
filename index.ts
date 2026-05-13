@@ -98,10 +98,11 @@ class UserManageDetailHandler extends UserManageHandler {
         if (!udoc) throw new UserNotFoundError(uid);
         
         if (operation === 'edit') {
-            await this.postEdit(domainId, uid);
+            await this.postEdit(domainId, uid, this.args.mail, this.args.uname, this.args.school, this.args.bio);
         } else if (operation === 'resetPassword') {
-            await this.postResetPassword(domainId, uid);
-        } else if (operation === 'setPriv') {
+            await this.postResetPassword(domainId, uid, this.args.password);
+        }
+        else if (operation === 'setPriv') {
             await this.postSetPriv(domainId, uid);
         } else if (operation === 'ban') {
             await this.postBan(domainId, uid);
